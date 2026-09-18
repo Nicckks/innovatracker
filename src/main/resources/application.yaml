@@ -5,9 +5,9 @@ spring:
     virtual:
       enabled: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/innovatracker
+    url: jdbc:postgresql://localhost:5432/innovatracker?currentSchema=innova
     username: postgres
-    password: postgres
+    password: ceub123456
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
