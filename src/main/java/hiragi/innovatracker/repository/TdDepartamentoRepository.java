@@ -1,33 +1,28 @@
 package hiragi.innovatracker.repository;
 
 import hiragi.innovatracker.model.TdDepartamento;
+import hiragi.innovatracker.model.TdDepartamento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-
 @Repository
 public interface TdDepartamentoRepository extends JpaRepository<TdDepartamento, Long> {
 
+    Optional<TdDepartamento> findBySglDepartamentoIgnoreCase(String sglDepartamento);
 
-    Optional<TdDepartamento> findBySglDepartamento(String sglCategoria);
+    List<TdDepartamento> findBySglDepartamentoContainingOrNmeDepartamentoContaining(String sgl, String nme);
 
-    List<TdDepartamento> findBySglDepartamentoContainingOrNmeDepartamento(String sql, String nme);
-
-    boolean existsBySglDepartamento(String sglCategoria);
-
+    boolean existsBySglDepartamentoIgnoreCase(String sglDepartamento);
 
     // Busca exata pelo nome
-    Optional<TdDepartamento> findByNmeDepartamento(String nmeCategoria);
+    Optional<TdDepartamento> findByNmeDepartamentoIgnoreCase(String nmeDepartamento);
 
-
-    boolean existsByNmeDepartamento(String nmeCategoria);
-
+    boolean existsByNmeDepartamentoIgnoreCase(String nmeDepartamento);
 
     // Busca parcial pelo nome (LIKE %valor%), ordenada
-    List<TdDepartamento> findByNmeDepartamentoContainingIgnoreCaseOrderByNmeDepartamento(String nmeCategoria);
-
+    List<TdDepartamento> findByNmeDepartamentoContainingIgnoreCaseOrderByNmeDepartamentoAsc(String nmeDepartamento);
 
 }
